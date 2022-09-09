@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SDL.h>
+#include "spritesheet.h"
 
 enum class Direction {
 	NONE,
@@ -19,9 +20,10 @@ public:
 	void draw(SDL_Surface* window_surface);
 	void handle_events(SDL_Event const& event);
 private:
-	SDL_Surface* m_image;
 	SDL_Rect m_position;
 	Direction m_direction;
+	Spritesheet m_spritesheet;
+
 	double m_x;
 	double m_y;
 };

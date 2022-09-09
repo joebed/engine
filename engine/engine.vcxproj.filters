@@ -24,6 +24,12 @@
     <ClCompile Include="stick_figure.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="spritesheet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="utilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="homedawg.bmp">
@@ -32,12 +38,24 @@
     <Image Include="..\..\..\..\Pictures\Camera Roll\stickman.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Knight\Knight\noBKG_KnightIdle_strip.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="sticksheet.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="app.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="stick_figure.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="spritesheet.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utilities.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,7 +1,6 @@
 #include "stick_figure.h"
 
 StickFigure::StickFigure() {
-	m_image = SDL_LoadBMP("stickman.bmp");
 	m_direction = Direction::NONE;
 
 	m_position.x = 0;
@@ -11,6 +10,7 @@ StickFigure::StickFigure() {
 
 	m_x = 0.0;
 	m_y = 0.0;
+	m_spritesheet.select_sprite(1, 1);
 }
 
 void StickFigure::update(double delta_time) {
@@ -18,18 +18,23 @@ void StickFigure::update(double delta_time) {
 	case Direction::NONE:
 		m_x += 0.0;
 		m_y += 0.0;
+		m_spritesheet.select_sprite(1, 1);
 		break;
 	case Direction::UP:
 		m_y = m_y - (5.0 * delta_time);
+		m_spritesheet.select_sprite(0, 0);
 		break;
 	case Direction::DOWN:
 		m_y = m_y + (5.0 * delta_time);
+		m_spritesheet.select_sprite(1, 1);
 		break;
 	case Direction::LEFT:
 		m_x = m_x - (5.0 * delta_time);
+		m_spritesheet.select_sprite(1, 0);
 		break;
 	case Direction::RIGHT:
 		m_x = m_x + (5.0 * delta_time);
+		m_spritesheet.select_sprite(0, 1);
 		break;
 	}
 
@@ -38,7 +43,7 @@ void StickFigure::update(double delta_time) {
 }
 
 void StickFigure::draw(SDL_Surface* window_surface) {
-	SDL_BlitSurface(m_image, nullptr, window_surface, &m_position);
+	m_spritesheet.draw_selected_sprite(window_surface, &m_position);
 }
 
 void StickFigure::handle_events(SDL_Event const& event) {
@@ -54,6 +59,8 @@ void StickFigure::handle_events(SDL_Event const& event) {
 			m_direction = Direction::LEFT;
 		else if (keys[SDL_SCANCODE_D] == 1)
 			m_direction = Direction::RIGHT;
+		else
+			m_direction = Direction::NONE;
 		break;
 	}
 }
