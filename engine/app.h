@@ -1,25 +1,21 @@
 #pragma once
-
 #include <SDL.h>
+#include <SDL_image.h>
 #include <iostream>
-#include "stick_figure.h"
 
-
+class InitException : std::exception {
+	InitException(char* stage) {
+		std::cerr << "Failed at creating the " << stage << ". Exiting...";
+	}
+};
 
 class App {
 public:
 	App();
 	~App();
 
-	void loop();
-	void update(double delta_time);
-	void draw();
 private:
-	StickFigure m_stick_figure;
-
-	SDL_Window* m_window;
-	SDL_Surface* m_window_surface;
-	SDL_Event m_window_event;
+	SDL_Window* window;
+	SDL_Surface* surface;
 };
 
-SDL_Surface* load_surface(char const* path);
